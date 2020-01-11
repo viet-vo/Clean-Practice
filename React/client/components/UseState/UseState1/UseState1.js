@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 
 const UseState1 = () => {
-  const initialState = {
-    firstName: "John",
-    lastName: "Doe"
+  /*
+  https://stackoverflow.com/questions/55757761/handle-an-input-with-react-hooks
+  Reusable function that returns the input value and the <input> itself
+  example
+  */
+  function useInput({ type }) {
+    const [value, setValue] = useState("");
+    const input = (
+      <input
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        type={type}
+      />
+    );
+    return [value, input];
+  }
+  const [username, userInput] = useInput({ type: "text" });
+  const [password, passwordInput] = useInput({ type: "text" });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(username + password);
   };
-  const [state, setstate] = useState(initialState);
   return (
     <div>
       <h1>useState1</h1>
       <form>
-        <label>
-          The value of this input tag is set using useState
-          <input value={state.firstName} readOnly={true} />
-        </label>
-        <label>
-          The value of this input tag is set using useState
-          <input value={state.lastName} readOnly={true} />
-        </label>
-        <button type="submit">submit</button>
+        {"Form"}
+        <>
+          {userInput} -> {username} <br />
+          {passwordInput} -> {password} <br />
+        </>
+        <button type="submit" onClick={onSubmit}>
+          submit
+        </button>
       </form>
     </div>
   );

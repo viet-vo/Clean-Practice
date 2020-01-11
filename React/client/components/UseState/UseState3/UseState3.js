@@ -3,12 +3,16 @@ import React, { useState } from "react";
 const UseState3 = () => {
   const initialState = {
     loggedIn1: true,
-    loggedIn2: false
+    loggedIn2: false,
+    inputVal: ""
   };
-  const [state, setstate] = useState(initialState);
+  const [state, setState] = useState(initialState);
+  const handleInput = e => {
+    setState(state.inputVal = e.target.value)
+  };
   return (
     <div>
-        <h1>useState3</h1>
+      <h1>useState3</h1>
       {state.loggedIn1 ? (
         <p>This paragragh is logged in since the boolean state is truthy</p>
       ) : (
@@ -19,6 +23,7 @@ const UseState3 = () => {
       ) : (
         <p>This paragragh is logged in since the boolean state is falsey</p>
       )}
+      <input onChange={handleInput} />
     </div>
   );
 };
