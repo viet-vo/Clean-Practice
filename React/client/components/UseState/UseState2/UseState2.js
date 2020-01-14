@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 
 const UseState2 = () => {
+  /*
+  https://stackoverflow.com/questions/52886181/setstate-update-array-value-using-index-in-react
+  You should always treat state as immutable
+  */
   const initialState = {
     array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   };
-  const [state, setstate] = useState(initialState);
+  // For instance, you shouldn't use setState for fizzbuzz in the state
+  // here but instead you should use the state and and just adjust the
+  // view of this in the render
+  const [state, setState] = useState(initialState);
+  const listItem = array => {
+    const items = array.map(item =>
+      item % 3 == 0 && item % 5 == 0
+        ? (item = "fizzbuzz ")
+        : item % 3 == 0
+        ? (item = "fizz ")
+        : item % 5 == 0
+        ? (item = "buzz ")
+        : item + " "
+    );
+    return items;
+  };
   return (
     <div>
       <h1>useState2</h1>
-      <p>Check the console <span>(Sidenote: could not return p tags within a ternary operator from a map function of the array in state)</span></p>
-      {state.array.map(element => {
-        1;
-        console.log(element);
-        element % 3 == 0 && element % 5 == 0 ? console.log("fizzbuzz") /*<p>fizzbuzz</p>*/ : 
-        element % 3 == 0 ? console.log("fizz") /*<p>fizz</p>*/ :
-        element % 5 == 0 ? console.log("buzz") /*<p>buzz</p>*/ : 
-        <p>element</p>
-      })}
+      <ul>{listItem(state.array)}</ul>
     </div>
   );
 };

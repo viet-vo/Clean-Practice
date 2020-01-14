@@ -18,7 +18,7 @@ const UseState1 = () => {
     return [value, input];
   }
   const [username, userInput] = useInput({ type: "text" });
-  const [password, passwordInput] = useInput({ type: "text" });
+  const [password, passwordInput] = useInput({ type: "number" });
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(username + password);
