@@ -2,31 +2,24 @@ import React, { useState } from "react";
 
 const UseState3 = () => {
   /*  
-  Example idea: input based switch statements for font color
+  This use case for useState dynamically affects the page
   */
   const initialState = {
-    loggedIn1: true,
-    loggedIn2: false,
-    inputVal: ""
+    color: "black",
+    inputVal: "",
   };
-  const [state, setState] = useState(initialState);
+  const [input, setInput] = useState(initialState.inputVal);
+  const [color, setColor] = useState(initialState.color)
   const handleInput = e => {
-    setState(state.inputVal = e.target.value)
+    setInput(e.target.value);
+    setColor(e.target.value);
   };
   return (
     <div>
-      <h1>useState3</h1>
-      {state.loggedIn1 ? (
-        <p>This paragragh is logged in since the boolean state is truthy</p>
-      ) : (
-        <p>This code will not be ran</p>
-      )}
-      {state.loggedIn2 ? (
-        <p>This code will not be ran</p>
-      ) : (
-        <p>This paragragh is logged in since the boolean state is falsey</p>
-      )}
-      <input onChange={handleInput} />
+      <h1 style={{ color: color }}>useState3</h1>
+      <p>Use case for dynamic effects</p>
+      <label>Try typing in a color: </label>
+      <input value={input} onChange={handleInput}></input>
     </div>
   );
 };

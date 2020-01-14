@@ -13,20 +13,22 @@ const UseState2 = () => {
   // view of this in the render
   const [state, setState] = useState(initialState);
   const listItem = array => {
-    const items = array.map(item =>
+    const itemBlock = (x, index) => <li key={index}>{x}</li>;
+    const items = array.map((item, index) =>
       item % 3 == 0 && item % 5 == 0
-        ? (item = "fizzbuzz ")
+        ? itemBlock("fizzbuzz", index)
         : item % 3 == 0
-        ? (item = "fizz ")
+        ? itemBlock("fizz", index)
         : item % 5 == 0
-        ? (item = "buzz ")
-        : item + " "
+        ? itemBlock("buzz", index)
+        : itemBlock(item, index)
     );
     return items;
   };
   return (
     <div>
       <h1>useState2</h1>
+      <label>Shows how you would state to show processed information</label>
       <ul>{listItem(state.array)}</ul>
     </div>
   );

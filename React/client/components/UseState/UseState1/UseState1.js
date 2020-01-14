@@ -19,13 +19,14 @@ const UseState1 = () => {
   }
   const [username, userInput] = useInput({ type: "text" });
   const [password, passwordInput] = useInput({ type: "number" });
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     console.log(username + password);
   };
   return (
     <div>
       <h1>useState1</h1>
+      <label>Demonstrates form control</label>
       <form>
         {"Form"}
         <>
