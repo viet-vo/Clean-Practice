@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 const UseState3 = () => {
+  /*  
+  Example idea: input based switch statements for font color
+  */
   const initialState = {
     loggedIn1: true,
     loggedIn2: false,
