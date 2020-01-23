@@ -9,5 +9,8 @@ site = 'https://www.amazon.com/s?k=jean+shorts+men&crid=3I902TX8F6XLF&sprefix=je
 page = requests.get(site)
 soup = BeautifulSoup(page.text, 'html.parser')
 
+# Pull all text sections from 
+titles = soup.find_all(class_='s-image-overlay-white-semitransparent')
+
 # Print scraped and parsed info
-print(soup)
+print(titles)

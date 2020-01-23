@@ -9,7 +9,7 @@ page = requests.get(
 )
 soup = BeautifulSoup(page.text, 'html.parser')
 
-# Pull all text from the BodyText div
+# Pull all text from the storyLink div
 article_name_list = soup.find_all(class_='storylink')
 
 # Use .contents to pull out the tag’s children
